@@ -209,14 +209,12 @@ function SlideHero() {
       <div style={{ position:'relative', textAlign:'center', maxWidth:900, zIndex:1 }}>
         {/* Logo B */}
         <div style={{ ...stagger(v, 0), display:'flex', justifyContent:'center', marginBottom:32 }}>
-          <div style={{
+          <img src="/logo-branex.jpeg" alt="Branex" style={{
             width:80, height:80, borderRadius:20,
-            background: grad,
-            display:'flex', alignItems:'center', justifyContent:'center',
-            fontFamily: T.display, fontWeight:700, fontSize:36, color:'#fff',
-            boxShadow:`0 0 40px ${T.signal}50`,
+            objectFit:'cover',
+            boxShadow:`0 0 40px rgba(0,212,170,0.5)`,
             animation:'pulse-glow 3s ease-in-out infinite',
-          }}>B</div>
+          }} />
         </div>
 
         <div style={{ ...stagger(v, 100), marginBottom:16 }}>
@@ -785,14 +783,12 @@ function SlideClosing() {
 
       <div style={{ position:'relative', zIndex:1, textAlign:'center', maxWidth:900 }}>
         <div style={{ ...stagger(v, 0), display:'flex', justifyContent:'center', marginBottom:40 }}>
-          <div style={{
+          <img src="/logo-branex.jpeg" alt="Branex" style={{
             width:100, height:100, borderRadius:24,
-            background: grad,
-            display:'flex', alignItems:'center', justifyContent:'center',
-            fontFamily:T.display, fontWeight:700, fontSize:44, color:'#fff',
-            boxShadow:`0 0 60px ${T.signal}60, 0 0 120px ${T.neural}40`,
+            objectFit:'cover',
+            boxShadow:`0 0 60px rgba(0,212,170,0.6), 0 0 120px rgba(108,92,231,0.4)`,
             animation:'pulse-glow 3s ease-in-out infinite, float 4s ease-in-out infinite',
-          }}>B</div>
+          }} />
         </div>
 
         <div style={{ ...stagger(v, 150), marginBottom:8 }}>
