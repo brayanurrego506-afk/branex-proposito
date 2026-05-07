@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Branex — Propósito Organizacional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, #root { width: 100%; height: 100%; overflow: hidden; }
+    body { background: #060B18; font-family: 'Inter', sans-serif; color: #F0F0F5; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes pulse-glow { 0%,100%{box-shadow:0 0 20px rgba(0,212,170,0.3)} 50%{box-shadow:0 0 40px rgba(0,212,170,0.6)} }
+    @keyframes float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-10px)} }
+    @keyframes scanline { 0%{transform:translateY(-100%)} 100%{transform:translateY(100vh)} }
+    @keyframes particle-drift { 0%{transform:translate(0,0) scale(1);opacity:0.6} 50%{transform:translate(20px,-30px) scale(1.2);opacity:1} 100%{transform:translate(-10px,20px) scale(0.8);opacity:0.4} }
+    @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes count-up { from{opacity:0;transform:scale(0.5)} to{opacity:1;transform:scale(1)} }
+    @keyframes line-grow { from{width:0} to{width:100%} }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
