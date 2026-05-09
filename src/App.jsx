@@ -267,7 +267,7 @@ function SlideStat() {
 
       <div style={{ position:'relative', zIndex:1, textAlign:'center', maxWidth:1000, width:'100%' }}>
         <div style={{ ...stagger(v, 0), marginBottom:24 }}>
-          <Chip color={T.neural}>El problema sistémico</Chip>
+          <Chip color={T.neural}>El problema empresarial</Chip>
         </div>
 
         <div style={{ ...stagger(v, 150), display:'flex', alignItems:'baseline', justifyContent:'center', gap:8, marginBottom:16 }}>
@@ -276,7 +276,7 @@ function SlideStat() {
             fontSize:'clamp(80px,14vw,160px)', lineHeight:1,
             ...gradText,
           }}>
-            <Counter to={96} suffix="%" duration={2500} />
+            <Counter to={73} suffix="%" duration={2500} />
           </span>
         </div>
 
@@ -284,39 +284,48 @@ function SlideStat() {
           ...stagger(v, 300),
           fontFamily:T.display, fontWeight:600,
           fontSize:'clamp(18px,3vw,36px)',
-          color:T.text, marginBottom:24, lineHeight:1.3,
+          color:T.text, marginBottom:12, lineHeight:1.3,
         }}>
-          de las empresas en Colombia<br />son micro, pequeñas o medianas.
+          de los datos que generan las empresas<br />nunca se convierten en decisiones.
         </h2>
+
+        <p style={{
+          ...stagger(v, 380),
+          fontFamily:T.mono, fontSize:'clamp(11px,1.2vw,13px)',
+          color:T.muted, marginBottom:24, letterSpacing:1,
+        }}>
+          Fuente: Forrester Research
+        </p>
 
         <div style={{ ...stagger(v, 450), width:120, height:2, background:grad, margin:'0 auto 32px' }} />
 
         <p style={{
           ...stagger(v, 550),
           fontFamily:T.body, fontSize:'clamp(14px,1.8vw,20px)',
-          color:T.muted, maxWidth:700, margin:'0 auto', lineHeight:1.8,
+          color:T.muted, maxWidth:760, margin:'0 auto', lineHeight:1.8,
         }}>
-          Y la mayoría toma decisiones <strong style={{color:T.text}}>a ciegas</strong> — porque la inteligencia de datos 
-          siempre fue privilegio de los grandes. El problema no es solo empresarial.
-          Es <strong style={{color:T.signal}}>sistémico, social y nacional.</strong>
+          El problema no es la <strong style={{color:T.text}}>falta de datos</strong> — es no saber qué hacer con ellos.
+          Las empresas los acumulan, los almacenan y los olvidan. La inteligencia se queda
+          en <strong style={{color:T.signal}}>informes que nadie lee y dashboards que nadie abre.</strong>
         </p>
 
         {/* Stats row */}
-        <div style={{ ...stagger(v, 700), display:'flex', gap:32, justifyContent:'center', marginTop:48, flexWrap:'wrap' }}>
+        <div style={{ ...stagger(v, 700), display:'flex', gap:24, justifyContent:'center', marginTop:48, flexWrap:'wrap' }}>
           {[
-            { n: 80, s: '%', label: 'del empleo generado por PyMEs' },
-            { n: 2.7, s: 'M+', label: 'empresas en Colombia' },
-            { n: 0, s: '', label: 'con acceso real a BI de clase mundial' },
+            { n: 87, s: '%', label: 'con baja madurez en BI y analítica', source: 'Gartner' },
+            { n: 24, s: '%', label: 'se consideran realmente data-driven', source: 'NewVantage Partners' },
+            { n: 70, s: '%', label: 'de proyectos de datos fracasan', source: 'Gartner' },
           ].map((item, i) => (
             <div key={i} style={{
               background:T.card, border:`1px solid ${T.border}`,
-              borderRadius:16, padding:'24px 32px', minWidth:180,
+              borderRadius:16, padding:'24px 28px', minWidth:200,
               backdropFilter:'blur(10px)',
             }}>
               <div style={{ fontFamily:T.display, fontWeight:700, fontSize:'clamp(28px,4vw,48px)', ...gradText }}>
-                {item.n === 0 ? <span style={{color:T.danger}}>0%</span> : <Counter to={item.n} suffix={item.s} />}
+                <Counter to={item.n} suffix={item.s} />
               </div>
-              <div style={{ fontFamily:T.body, fontSize:13, color:T.muted, marginTop:8 }}>{item.label}</div>
+              <div style={{ fontFamily:T.body, fontSize:13, color:T.muted, marginTop:8, lineHeight:1.4 }}>{item.label}</div>
+              <div style={{ fontFamily:T.mono, fontSize:10, color:T.muted, marginTop:8, opacity:0.6, letterSpacing:1 }}>{item.source}</div>
             </div>
           ))}
         </div>
