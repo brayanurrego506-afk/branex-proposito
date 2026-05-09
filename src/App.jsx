@@ -37,8 +37,11 @@ const SLIDES = [
   { id: 7,  type: 'CULTURE' },
   { id: 8,  type: 'CHAIN' },
   { id: 9,  type: 'COMMUNITY' },
-  { id: 10, type: 'VALUE' },
-  { id: 11, type: 'CLOSING' },
+  { id: 10, type: 'TARGET' },
+  { id: 11, type: 'MATURITY' },
+  { id: 12, type: 'PAINS' },
+  { id: 13, type: 'VALUE' },
+  { id: 14, type: 'CLOSING' },
 ];
 
 // ─── UTILIDADES ────────────────────────────────────────────────────────────────
@@ -784,6 +787,254 @@ function SlideCommunity() {
   );
 }
 
+function SlideTarget() {
+  const v = useVisible(100);
+  const sectors = [
+    { icon:'🛒', name:'Retail',           sub:'Red Fenalco' },
+    { icon:'🚢', name:'Comercio Exterior', sub:'Red Analdex' },
+    { icon:'🏭', name:'Manufactura',       sub:'Industria grande' },
+    { icon:'🏦', name:'Financiero',        sub:'Bancos · Aseguradoras' },
+    { icon:'🎓', name:'Educación',         sub:'Universidades' },
+  ];
+  const profile = ['100+ empleados', 'COP 5.000M+ facturación', 'Estructura directiva formal'];
+
+  return (
+    <SlideWrap>
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 70% 20%, ${T.signal}10 0%, transparent 55%)`, pointerEvents:'none' }} />
+      <div style={{ position:'relative', zIndex:1, maxWidth:1100, width:'100%' }}>
+        <div style={{ ...stagger(v, 0), marginBottom:16, textAlign:'center' }}>
+          <Chip color={T.signal}>Cliente objetivo · Branex Enterprise</Chip>
+        </div>
+
+        <h2 style={{
+          ...stagger(v, 150),
+          fontFamily:T.display, fontWeight:700,
+          fontSize:'clamp(22px,3.4vw,44px)',
+          textAlign:'center', lineHeight:1.25, marginBottom:14, color:T.text,
+        }}>
+          Branex ya no habla con el dueño de una tienda.<br />
+          <span style={gradText}>Habla con quien le responde a una junta.</span>
+        </h2>
+
+        <p style={{
+          ...stagger(v, 280),
+          textAlign:'center', fontFamily:T.mono,
+          fontSize:'clamp(11px,1.3vw,14px)', color:T.muted, marginBottom:32, letterSpacing:1,
+        }}>
+          Director de Inteligencia · CFO · Rector · Gerente de Operaciones
+        </p>
+
+        {/* Perfil mínimo */}
+        <div style={{ ...stagger(v, 380), display:'flex', justifyContent:'center', gap:12, flexWrap:'wrap', marginBottom:36 }}>
+          {profile.map((p, i) => (
+            <span key={i} style={{
+              fontFamily:T.mono, fontSize:12, color:T.signal,
+              border:`1px solid ${T.signal}40`, padding:'6px 14px',
+              borderRadius:20, background:`${T.signal}08`,
+            }}>{p}</span>
+          ))}
+        </div>
+
+        {/* 5 sectores */}
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(5, 1fr)', gap:14 }}>
+          {sectors.map((s, i) => (
+            <div key={i} style={{
+              ...stagger(v, 500 + i * 80),
+              background:T.card, border:`1px solid ${T.border}`,
+              borderRadius:14, padding:'20px 14px', textAlign:'center',
+              transition:'all 0.3s ease',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-4px)'; e.currentTarget.style.borderColor=T.signal+'60'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.borderColor=T.border; }}
+            >
+              <div style={{ fontSize:32, marginBottom:10 }}>{s.icon}</div>
+              <div style={{ fontFamily:T.display, fontWeight:600, fontSize:'clamp(13px,1.4vw,16px)', color:T.text, marginBottom:4 }}>{s.name}</div>
+              <div style={{ fontFamily:T.mono, fontSize:10, color:T.muted, letterSpacing:1 }}>{s.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ ...stagger(v, 950), textAlign:'center', marginTop:32 }}>
+          <span style={{ fontFamily:T.mono, fontSize:12, color:T.muted, letterSpacing:1 }}>
+            Entrada: Juan Carlos Vélez <span style={{color:T.signal}}>→</span> Fenalco <span style={{color:T.signal}}>→</span> Analdex <span style={{color:T.signal}}>→</span> empresas afiliadas
+          </span>
+        </div>
+      </div>
+    </SlideWrap>
+  );
+}
+
+function SlideMaturity() {
+  const v = useVisible(100);
+  const levels = [
+    {
+      tag:'Low Maturity',
+      nick:'Excel Warriors',
+      icon:'📊',
+      color:T.gold,
+      perfil:'Cada área tiene su propio Excel. Reportes copy-paste. ERP que nadie usa.',
+      dolor:'Caos operativo · dependencia humana · decisiones por intuición.',
+      branex:'Claridad inmediata. Dashboards unificados. Centralización de datos.',
+      offset: 80,
+    },
+    {
+      tag:'Medium Maturity',
+      nick:'BI Frustrados',
+      icon:'📈',
+      color:T.neural,
+      perfil:'Compraron Power BI o Tableau. 40 dashboards, ningún insight que mueva una decisión.',
+      dolor:'Silos · exceso de reportes · analistas limpiando datos en lugar de analizar.',
+      branex:'Integración de fuentes. IA sobre los datos que ya tienen. Insights proactivos.',
+      offset: 40,
+    },
+    {
+      tag:'High Maturity',
+      nick:'Data Teams Atascados',
+      icon:'🧠',
+      color:T.signal,
+      perfil:'Tienen data engineers, científicos de datos, cloud. La velocidad del negocio supera al equipo.',
+      dolor:'Time-to-insight de semanas · modelos que no escalan · deuda técnica.',
+      branex:'Decision intelligence. Modelos pre-entrenados por industria. Días, no semanas.',
+      offset: 0,
+    },
+  ];
+
+  return (
+    <SlideWrap>
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 50% 80%, ${T.neural}12 0%, transparent 55%)`, pointerEvents:'none' }} />
+      <div style={{ position:'relative', zIndex:1, maxWidth:1200, width:'100%' }}>
+        <div style={{ ...stagger(v, 0), textAlign:'center', marginBottom:16 }}>
+          <Chip color={T.neural}>Segmentación por Madurez Digital</Chip>
+        </div>
+        <h2 style={{
+          ...stagger(v, 150),
+          fontFamily:T.display, fontWeight:700,
+          fontSize:'clamp(22px,3.4vw,44px)',
+          textAlign:'center', lineHeight:1.25, marginBottom:12, color:T.text,
+        }}>
+          El nivel de madurez define <span style={gradText}>qué le duele.</span>
+        </h2>
+        <p style={{ ...stagger(v, 250), textAlign:'center', fontFamily:T.body, fontSize:'clamp(13px,1.4vw,16px)', color:T.muted, marginBottom:48 }}>
+          Branex sirve a los 3 niveles — cada uno con su propuesta.
+        </p>
+
+        {/* 3 cards en escalera ascendente */}
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:20, alignItems:'end' }}>
+          {levels.map((lvl, i) => (
+            <div key={i} style={{
+              ...stagger(v, 350 + i * 150),
+              transform: v ? `translateY(-${lvl.offset}px)` : 'translateY(32px)',
+              transition: `opacity 0.8s cubic-bezier(0.4,0,0.2,1) ${350 + i * 150}ms, transform 0.8s cubic-bezier(0.4,0,0.2,1) ${350 + i * 150}ms`,
+              background:T.card, border:`1px solid ${lvl.color}30`,
+              borderTop:`3px solid ${lvl.color}`,
+              borderRadius:16, padding:'24px 22px',
+              position:'relative',
+              boxShadow:`0 12px 40px ${lvl.color}10`,
+            }}>
+              <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
+                <span style={{ fontSize:28 }}>{lvl.icon}</span>
+                <span style={{ fontFamily:T.mono, fontSize:10, color:lvl.color, letterSpacing:1.5, textTransform:'uppercase' }}>{lvl.tag}</span>
+              </div>
+              <h3 style={{ fontFamily:T.display, fontWeight:700, fontSize:'clamp(17px,2vw,22px)', color:lvl.color, marginBottom:14 }}>
+                "{lvl.nick}"
+              </h3>
+              <p style={{ fontFamily:T.body, fontSize:13, color:T.text, lineHeight:1.6, marginBottom:14 }}>
+                {lvl.perfil}
+              </p>
+              <div style={{ borderLeft:`2px solid ${lvl.color}40`, paddingLeft:12, marginBottom:14 }}>
+                <div style={{ fontFamily:T.mono, fontSize:10, color:T.muted, letterSpacing:1, marginBottom:4 }}>DOLOR</div>
+                <div style={{ fontFamily:T.body, fontSize:12, color:T.muted, lineHeight:1.5 }}>{lvl.dolor}</div>
+              </div>
+              <div style={{ borderLeft:`2px solid ${lvl.color}`, paddingLeft:12 }}>
+                <div style={{ fontFamily:T.mono, fontSize:10, color:lvl.color, letterSpacing:1, marginBottom:4 }}>BRANEX ENTRA</div>
+                <div style={{ fontFamily:T.body, fontSize:12, color:T.text, lineHeight:1.5 }}>{lvl.branex}</div>
+              </div>
+
+              {/* Indicador de nivel */}
+              <div style={{
+                position:'absolute', top:-12, right:14,
+                background:T.bg2, border:`1px solid ${lvl.color}`,
+                color:lvl.color, fontFamily:T.mono, fontSize:11, fontWeight:700,
+                padding:'2px 10px', borderRadius:10, letterSpacing:1,
+              }}>L{i+1}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Flecha ascendente decorativa */}
+        <div style={{ ...stagger(v, 900), textAlign:'center', marginTop:32, fontFamily:T.mono, fontSize:13, color:T.signal, letterSpacing:2 }}>
+          ↗ EVOLUCIÓN DE MADUREZ DIGITAL
+        </div>
+      </div>
+    </SlideWrap>
+  );
+}
+
+function SlidePains() {
+  const v = useVisible(100);
+  const pains = [
+    { icon:'🔗', title:'Datos fragmentados',         quote:'Sistemas que no hablan entre sí.',           sol:'Capa unificada que conecta todas las fuentes.' },
+    { icon:'⚡', title:'Decisiones lentas',          quote:'Cuando llega el reporte ya es tarde.',       sol:'Alertas en tiempo real + predicciones tempranas.' },
+    { icon:'📑', title:'Trabajo manual',             quote:'Equipos enteros haciendo reportes.',         sol:'Automatización del reporte. ROI inmediato.' },
+    { icon:'🎯', title:'Dashboard sin acción',       quote:'Tenemos los números, no sabemos qué hacer.', sol:'Del dashboard al insight a la recomendación.' },
+    { icon:'👁️', title:'Sin visibilidad ejecutiva', quote:'El CEO no tiene una sola fuente de verdad.', sol:'Executive Dashboard. Una pantalla, una verdad.' },
+    { icon:'⚙️', title:'Procesos repetitivos',      quote:'Pasos manuales que nadie ha automatizado.',  sol:'IA copiloto operativo. Personas en alto valor.' },
+    { icon:'💸', title:'Pérdida invisible',          quote:'Hay plata yéndose y no la vemos.',           sol:'Detección de churn + rentabilidad real por SKU.' },
+  ];
+  return (
+    <SlideWrap>
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 30% 30%, ${T.danger}08 0%, transparent 50%)`, pointerEvents:'none' }} />
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 70% 80%, ${T.signal}10 0%, transparent 50%)`, pointerEvents:'none' }} />
+      <div style={{ position:'relative', zIndex:1, maxWidth:1200, width:'100%' }}>
+        <div style={{ ...stagger(v, 0), textAlign:'center', marginBottom:14 }}>
+          <Chip color={T.gold}>Los 7 Dolores Enterprise</Chip>
+        </div>
+        <h2 style={{
+          ...stagger(v, 150),
+          fontFamily:T.display, fontWeight:700,
+          fontSize:'clamp(22px,3.4vw,44px)',
+          textAlign:'center', lineHeight:1.2, marginBottom:36, color:T.text,
+        }}>
+          Donde <span style={gradText}>Branex resuelve.</span>
+        </h2>
+
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(250px, 1fr))', gap:14 }}>
+          {pains.map((p, i) => (
+            <div key={i} style={{
+              ...stagger(v, 250 + i * 70),
+              background:T.card, border:`1px solid ${T.border}`,
+              borderRadius:14, padding:'18px 18px',
+              transition:'all 0.3s ease',
+              display:'flex', flexDirection:'column', gap:8,
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform='translateY(-3px)'; e.currentTarget.style.borderColor=T.signal+'50'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.borderColor=T.border; }}
+            >
+              <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+                <span style={{ fontSize:22 }}>{p.icon}</span>
+                <h3 style={{ fontFamily:T.display, fontWeight:600, fontSize:'clamp(13px,1.4vw,16px)', color:T.text, margin:0 }}>{p.title}</h3>
+              </div>
+              <p style={{ fontFamily:T.body, fontSize:12, color:T.muted, fontStyle:'italic', lineHeight:1.5, margin:0 }}>
+                "{p.quote}"
+              </p>
+              <div style={{ display:'flex', gap:8, alignItems:'flex-start', marginTop:'auto', paddingTop:8, borderTop:`1px solid ${T.border}` }}>
+                <span style={{ color:T.signal, fontFamily:T.mono, fontSize:11, fontWeight:700 }}>→</span>
+                <span style={{ fontFamily:T.body, fontSize:12, color:T.text, lineHeight:1.5 }}>{p.sol}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ ...stagger(v, 950), textAlign:'center', marginTop:28 }}>
+          <span style={{ fontFamily:T.mono, fontSize:'clamp(12px,1.4vw,15px)', color:T.signal, letterSpacing:1 }}>
+            Branex no es BI. Es <span style={gradText}>decisión inteligente.</span>
+          </span>
+        </div>
+      </div>
+    </SlideWrap>
+  );
+}
+
 function SlideValue() {
   const v = useVisible(100);
   return (
@@ -979,11 +1230,14 @@ const SLIDE_MAP = {
   CULTURE: SlideCulture,
   CHAIN: SlideChain,
   COMMUNITY: SlideCommunity,
+  TARGET: SlideTarget,
+  MATURITY: SlideMaturity,
+  PAINS: SlidePains,
   VALUE: SlideValue,
   CLOSING: SlideClosing,
 };
 
-const SLIDE_LABELS = ['Inicio','El Problema','El Ciclo','Manifiesto','EcoRadar','Talento','Cultura','Impacto','Comunidad','Oferta de Valor','Cierre'];
+const SLIDE_LABELS = ['Inicio','El Problema','El Ciclo','Manifiesto','EcoRadar','Talento','Cultura','Impacto','Comunidad','Cliente Enterprise','Madurez Digital','7 Dolores','Oferta de Valor','Cierre'];
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
 export default function App() {
