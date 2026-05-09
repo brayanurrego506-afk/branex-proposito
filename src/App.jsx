@@ -37,7 +37,8 @@ const SLIDES = [
   { id: 7,  type: 'CULTURE' },
   { id: 8,  type: 'CHAIN' },
   { id: 9,  type: 'COMMUNITY' },
-  { id: 10, type: 'CLOSING' },
+  { id: 10, type: 'VALUE' },
+  { id: 11, type: 'CLOSING' },
 ];
 
 // ─── UTILIDADES ────────────────────────────────────────────────────────────────
@@ -478,7 +479,7 @@ function SlideEcoRadar() {
                 color:'#00C864', border:'1px solid #00C86440',
                 padding:'8px 20px', borderRadius:8,
                 background:'rgba(0,200,100,0.08)',
-              }}>branex.co/ecoradar</span>
+              }}>branex.space/ecoradar</span>
             </div>
           </div>
 
@@ -774,6 +775,111 @@ function SlideCommunity() {
   );
 }
 
+function SlideValue() {
+  const v = useVisible(100);
+  return (
+    <SlideWrap>
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 50% 40%, ${T.signal}14 0%, transparent 55%)`, pointerEvents:'none' }} />
+      <div style={{ position:'absolute', inset:0, background:`radial-gradient(ellipse at 80% 90%, ${T.neural}12 0%, transparent 50%)`, pointerEvents:'none' }} />
+
+      <div style={{ position:'relative', zIndex:1, maxWidth:1100, width:'100%', textAlign:'center' }}>
+        <div style={{ ...stagger(v, 0), marginBottom:24 }}>
+          <Chip>Oferta de Valor</Chip>
+        </div>
+
+        <h2 style={{
+          ...stagger(v, 150),
+          fontFamily:T.display, fontWeight:700,
+          fontSize:'clamp(24px,4vw,52px)',
+          lineHeight:1.25, marginBottom:16, color:T.text,
+        }}>
+          Las empresas no fallan por <span style={{ color:T.muted }}>falta de datos.</span>
+        </h2>
+
+        <h2 style={{
+          ...stagger(v, 300),
+          fontFamily:T.display, fontWeight:700,
+          fontSize:'clamp(24px,4vw,52px)',
+          lineHeight:1.25, marginBottom:48,
+          ...gradText,
+        }}>
+          Fallan por no saber usarlos.
+        </h2>
+
+        {/* Flujo visual: DATOS → BRANEX → DECISIONES */}
+        <div style={{
+          ...stagger(v, 450),
+          display:'flex', alignItems:'center', justifyContent:'center',
+          gap:0, flexWrap:'nowrap', marginBottom:48,
+        }}>
+          {/* DATOS */}
+          <div style={{
+            background:T.card, border:`1px solid rgba(255,255,255,0.08)`,
+            borderRadius:16, padding:'24px 32px', minWidth:160,
+          }}>
+            <div style={{ fontSize:32, marginBottom:8 }}>📊</div>
+            <div style={{ fontFamily:T.display, fontWeight:700, fontSize:'clamp(14px,1.6vw,18px)', color:T.muted, letterSpacing:1 }}>DATOS</div>
+            <div style={{ fontFamily:T.mono, fontSize:11, color:T.muted, marginTop:6, opacity:0.7 }}>crudos · dispersos</div>
+          </div>
+
+          {/* Flecha 1 */}
+          <div style={{ width:48, height:2, background:`linear-gradient(90deg, rgba(255,255,255,0.2), ${T.signal})`, position:'relative', margin:'0 4px' }}>
+            <div style={{ position:'absolute', right:-4, top:-4, width:10, height:10, borderTop:`2px solid ${T.signal}`, borderRight:`2px solid ${T.signal}`, transform:'rotate(45deg)' }} />
+          </div>
+
+          {/* BRANEX (núcleo) */}
+          <div style={{
+            background:`linear-gradient(135deg, ${T.signal}18, ${T.neural}18)`,
+            border:`1px solid ${T.signal}50`,
+            borderRadius:16, padding:'24px 32px', minWidth:180,
+            boxShadow:`0 0 40px ${T.signal}25`,
+            animation:'pulse-glow 3s ease-in-out infinite',
+          }}>
+            <div style={{ fontSize:32, marginBottom:8 }}>⚡</div>
+            <div style={{ fontFamily:T.display, fontWeight:700, fontSize:'clamp(14px,1.6vw,18px)', ...gradText, letterSpacing:1 }}>BRANEX</div>
+            <div style={{ fontFamily:T.mono, fontSize:11, color:T.signal, marginTop:6 }}>datos + IA</div>
+          </div>
+
+          {/* Flecha 2 */}
+          <div style={{ width:48, height:2, background:`linear-gradient(90deg, ${T.neural}, ${T.signal})`, position:'relative', margin:'0 4px' }}>
+            <div style={{ position:'absolute', right:-4, top:-4, width:10, height:10, borderTop:`2px solid ${T.signal}`, borderRight:`2px solid ${T.signal}`, transform:'rotate(45deg)' }} />
+          </div>
+
+          {/* DECISIONES */}
+          <div style={{
+            background:`${T.signal}10`, border:`1px solid ${T.signal}50`,
+            borderRadius:16, padding:'24px 32px', minWidth:160,
+          }}>
+            <div style={{ fontSize:32, marginBottom:8 }}>🎯</div>
+            <div style={{ fontFamily:T.display, fontWeight:700, fontSize:'clamp(14px,1.6vw,18px)', color:T.signal, letterSpacing:1 }}>DECISIONES</div>
+            <div style={{ fontFamily:T.mono, fontSize:11, color:T.signal, marginTop:6, opacity:0.8 }}>claras · rentables</div>
+          </div>
+        </div>
+
+        {/* Frase de cierre */}
+        <div style={{
+          ...stagger(v, 700),
+          padding:'24px 40px',
+          background:T.card, border:`1px solid ${T.border}`,
+          borderRadius:16, borderLeft:`4px solid ${T.signal}`,
+          display:'inline-block', textAlign:'left', maxWidth:780,
+        }}>
+          <p style={{
+            fontFamily:T.display, fontWeight:600,
+            fontSize:'clamp(16px,2.2vw,26px)',
+            color:T.text, lineHeight:1.5, margin:0,
+          }}>
+            Branex convierte sus datos en <span style={gradText}>decisiones.</span>
+          </p>
+          <p style={{ fontFamily:T.mono, fontSize:12, color:T.signal, marginTop:10, letterSpacing:1 }}>
+            — Inteligencia que rinde, no reportes que se acumulan.
+          </p>
+        </div>
+      </div>
+    </SlideWrap>
+  );
+}
+
 function SlideClosing() {
   const v = useVisible(100);
   return (
@@ -835,7 +941,7 @@ function SlideClosing() {
             fontFamily:T.mono, fontSize:'clamp(12px,1.4vw,16px)',
             color:T.muted, letterSpacing:3,
           }}>
-            BRANEX · branex.co
+            BRANEX · branex.space
           </div>
         </div>
 
@@ -864,10 +970,11 @@ const SLIDE_MAP = {
   CULTURE: SlideCulture,
   CHAIN: SlideChain,
   COMMUNITY: SlideCommunity,
+  VALUE: SlideValue,
   CLOSING: SlideClosing,
 };
 
-const SLIDE_LABELS = ['Inicio','El Problema','El Ciclo','Manifiesto','EcoRadar','Talento','Cultura','Impacto','Comunidad','Cierre'];
+const SLIDE_LABELS = ['Inicio','El Problema','El Ciclo','Manifiesto','EcoRadar','Talento','Cultura','Impacto','Comunidad','Oferta de Valor','Cierre'];
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
 export default function App() {
